@@ -13,4 +13,13 @@
 
 	<Import Project="Facepunch.Steamworks.targets" />
 
+	<ItemGroup>
+	  <None Update="steam_api.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="steam_api64.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>
