@@ -24,14 +24,9 @@
 		<RepositoryUrl>https://github.com/Facepunch/Facepunch.Steamworks.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Remove="SteamApps.cs" />
-	</ItemGroup>
   
 	<ItemGroup>
       <None Include="Facepunch.Steamworks.jpg" Pack="true" PackagePath="\" />
-      <None Include="SteamApps.cs" />
 	</ItemGroup>
   
 	<ItemGroup>
