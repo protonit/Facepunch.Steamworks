@@ -24,17 +24,11 @@
 		<RepositoryUrl>https://github.com/Facepunch/Facepunch.Steamworks.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Content Include="lib\steam_api.dll">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="lib\steam_api64.dll">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-	</ItemGroup>
   
 	<ItemGroup>
+		<Content Include="steam_api64.dll" PackagePath="\content\" Pack="true" PackageCopyToOutput="true">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <None Include="Facepunch.Steamworks.jpg" Pack="true" PackagePath="\" />
 	</ItemGroup>
   
@@ -45,5 +39,18 @@
 	</ItemGroup>
 
 	<Import Project="Facepunch.Steamworks.targets" />
+
+	<Target Name="PostBuildHome" AfterTargets="PostBuildEvent" Condition="'$(Computername)'=='GarryBasementPc'">
+	  <Exec Command="Copy $(TargetDir)\Facepunch.Steamworks.Win64.* C:\plastic\RustMain\Assets\Plugins\Facepunch.Steamworks\" />
+	  <Exec Command="Copy $(TargetDir)\Facepunch.Steamworks.Posix.* C:\plastic\RustMain\Assets\Plugins\Facepunch.Steamworks\" />
+	</Target>
+  
+  <Target Name="PostBuildOffice" AfterTargets="PostBuildEvent" Condition="'$(Computername)'=='GARRYSOFFICEPC'">
+    <Exec Command="Copy $(TargetDir)\Facepunch.Steamworks.Win64.* C:\Plastic\Rust\Assets\Plugins\Facepunch.Steamworks\" />
+    <Exec Command="Copy $(TargetDir)\Facepunch.Steamworks.Posix.* C:\Plastic\Rust\Assets\Plugins\Facepunch.Steamworks\" />
+    <Exec Command="Copy $(TargetDir)\Facepunch.Steamworks.Win64.* C:\Git\Facepunch.Steamworks.UnityTest\Assets\Steamworks" />
+    <Exec Command="Copy $(TargetDir)\Facepunch.Steamworks.Win32.* C:\Git\Facepunch.Steamworks.UnityTest\Assets\Steamworks" />
+    <Exec Command="Copy $(TargetDir)\Facepunch.Steamworks.Posix.* C:\Git\Facepunch.Steamworks.UnityTest\Assets\Steamworks" />
+  </Target>  
 
 </Project>
